@@ -22,35 +22,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "On Create");
     }
 
-    public void init(){
-        arr = new int[][]{
-            {0, 0, 0, 0},
-            {0, 0, 0, 0},
-            {0, 0, 0, 0},
-            {0, 0, 0, 0}
-        };
-    }
-
-    public void refresh(View view){
-
-    }
-
-    public void toLeft(View view){
-        refresh(view);
-    }
-    public void toRight(View view){
-
-        refresh(view);
-    }
-    public void toTop(View view){
-
-        refresh(view);
-    }
-    public void toBottom(View view){
-
-        refresh(view);
-    }
-
     @Override
     protected void onStart(){
         super.onStart();
