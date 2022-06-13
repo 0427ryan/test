@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cell"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill"
+    tools:context=".GameActivity">
+
+    <Button
+        android:id="@+id/upBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTop"
+        android:text="@string/up"
+        app:layout_constraintBottom_toTopOf="@+id/downBt"
+        app:layout_constraintEnd_toEndOf="@+id/downBt"
+        app:layout_constraintStart_toStartOf="@+id/downBt" />
+
+    <Button
+        android:id="@+id/leftBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toLeft"
+        android:text="@string/left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/rightBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:onClick="toRight"
+        android:text="@string/right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/downBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toBottom"
+        android:text="@string/down"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightBt"
+        app:layout_constraintStart_toEndOf="@+id/leftBt" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#B5FAB8"
+        app:columnCount="4"
+        app:layout_constraintBottom_toTopOf="@+id/upBt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:orientation="horizontal"
+        app:rowCount="4">
+
+        <TextView
+            android:id="@+id/cell00"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell01"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell02"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical" />
+
+        <TextView
+            android:id="@+id/cell03"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell10"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell11"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell12"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell13"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell20"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell21"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell22"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell23"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell30"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell31"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell32"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
+            android:id="@+id/cell33"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:gravity="center_horizontal|center_vertical"/>
+
+    </android.support.v7.widget.GridLayout>
+
+</android.support.constraint.ConstraintLayout>
