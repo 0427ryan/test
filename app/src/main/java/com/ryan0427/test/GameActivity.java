@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.util.Log;
+import java.security.SecureRandom;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -50,6 +51,28 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    public void addNewCell(){
+        SecureRandom rand = new SecureRandom();
+        int num = (rand.nextInt(2) + 1) * 2;
+        int bound = 16;
+        for(int i = 0 ; i < 4 ; i++){
+            for (int j = 0 ; j < 4 ; j++){
+                if(arr[i][j] != 0){
+                    bound--;
+                }
+            }
+        }
+        int place = rand.nextInt(bound);
+        for(int i = 0 ; i < 4 ; i++){
+            for (int j = 0 ; j < 4 ; j++){
+                if(arr[i][j] == 0 && --place == 0){
+                    arr[i][j] = num;
+                    return;
+                }
+            }
+        }
+    }
+
     public void toLeft(View view){
         for(int row = 0 ; row < 4 ; row++){
             for(int col = 0 ; col < 3 ; col++){
@@ -69,6 +92,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+        addNewCell();
         refresh();
     }
     public void toRight(View view){
@@ -90,6 +114,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+        addNewCell();
         refresh();
     }
     public void toTop(View view){
@@ -111,6 +136,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+        addNewCell();
         refresh();
     }
     public void toBottom(View view){
@@ -124,7 +150,7 @@ public class GameActivity extends AppCompatActivity {
                 }
                 if(index1 != row){
                     arr[3 - row][col] = arr[3 - index1][col];
-                    arr[index1][col] = 0;
+                    arr[3 - index1][col] = 0;
                 }
                 if(index2 < 4 && arr[3 - row][col] == arr[3 - index2][col]){
                     arr[3 - row][col] *= 2;
@@ -132,6 +158,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+        addNewCell();
         refresh();
     }
 }
