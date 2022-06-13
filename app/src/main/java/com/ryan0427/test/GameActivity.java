@@ -28,7 +28,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void init(){
         arr = new int[][]{
-                {0, 0, 0, 0},
+                {1, 1, 1, 1},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0}
@@ -50,24 +50,22 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void toLeft(View view){
-        for(int i = 0 ; i < 4 ; i++){
-            for(int j = 0 ; j < 4 ; j++){
-                if(arr[i][j] != 0){
+        for(int row = 0 ; row < 4 ; row++){
+            for(int col = 0 ; col < 3 ; col++){
+                int col2;
+                for(col2 = col + 1; col2 < 4 && arr[row][col2] == 0 ; col2++);
+                if(col2 == 4){
                     continue;
                 }
-                int temp = 4;
-                for(int k = j + 1 ; k < 4 ; k++){
-                    if(arr[i][k] != 0){
-                        temp = k;
-                        break;
+                if(arr[row][col] == arr[row][col2]){
+                    arr[row][col] *= 2;
+                    arr[row][col2] = 0;
+                }
+                else{
+                    arr[row][col + 1] = arr[row][col2];
+                    if(col + 1 != row){
+                        arr[row][col2] = 0;
                     }
-                }
-                if(temp == 4)
-                    continue;
-                arr[i][j] = arr[i][temp];
-                arr[i][temp] = 0;
-                if(j != 0 && arr[i][j - 1] == arr[i][j]){
-                    arr[i][j - 1] *= 2;
                 }
             }
         }

@@ -85,7 +85,7 @@
         <TextView
             android:id="@+id/cell02"
             android:layout_width="200px"
-            android:layout_height="wrap_content"
+            android:layout_height="200px"
             android:gravity="center_horizontal|center_vertical" />
 
         <TextView
