@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
+
 import java.security.SecureRandom;
 
 public class GameActivity extends AppCompatActivity {
@@ -29,18 +31,24 @@ public class GameActivity extends AppCompatActivity {
 
 
     public void init(){
-        arr = new int[][]{
-                {1, 1, 1, 1},
-                {1, 1, 1, 1},
-                {1, 1, 1, 1},
-                {1, 1, 1, 1}
-        };
         views = new TextView[]{
                 findViewById(R.id.cell00),findViewById(R.id.cell01),findViewById(R.id.cell02),findViewById(R.id.cell03),
                 findViewById(R.id.cell10),findViewById(R.id.cell11),findViewById(R.id.cell12),findViewById(R.id.cell13),
                 findViewById(R.id.cell20),findViewById(R.id.cell21),findViewById(R.id.cell22),findViewById(R.id.cell23),
                 findViewById(R.id.cell30),findViewById(R.id.cell31),findViewById(R.id.cell32),findViewById(R.id.cell33)
         };
+        newGame();
+    }
+
+    public void newGame(){
+        arr = new int[][]{
+                {0, 0, 0, 0},
+                {0, 0, 0, 0},
+                {0, 0, 0, 0},
+                {0, 0, 0, 0},
+        };
+        addNewCell();
+        addNewCell();
         refresh();
     }
 
@@ -63,6 +71,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         if(bound == 0){
+            Toast.makeText(this, "can't move", Toast.LENGTH_LONG).show();
             return;
         }
         int place = rand.nextInt(bound) + 1;
