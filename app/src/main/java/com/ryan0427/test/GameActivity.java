@@ -62,7 +62,10 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
-        int place = rand.nextInt(bound);
+        if(bound == 0){
+            return;
+        }
+        int place = rand.nextInt(bound) + 1;
         for(int i = 0 ; i < 4 ; i++){
             for (int j = 0 ; j < 4 ; j++){
                 if(arr[i][j] == 0 && --place == 0){
