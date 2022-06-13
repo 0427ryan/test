@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.util.Log;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -29,9 +30,9 @@ public class GameActivity extends AppCompatActivity {
     public void init(){
         arr = new int[][]{
                 {1, 1, 1, 1},
-                {0, 0, 0, 0},
-                {0, 0, 0, 0},
-                {0, 0, 0, 0}
+                {1, 1, 1, 1},
+                {1, 1, 1, 1},
+                {1, 1, 1, 1}
         };
         views = new TextView[]{
                 findViewById(R.id.cell00),findViewById(R.id.cell01),findViewById(R.id.cell02),findViewById(R.id.cell03),
@@ -52,35 +53,85 @@ public class GameActivity extends AppCompatActivity {
     public void toLeft(View view){
         for(int row = 0 ; row < 4 ; row++){
             for(int col = 0 ; col < 3 ; col++){
-                int col2;
-                for(col2 = col + 1; col2 < 4 && arr[row][col2] == 0 ; col2++);
-                if(col2 == 4){
-                    continue;
+                int index1, index2;
+                for(index1 = col; index1 < 4 && arr[row][index1] == 0 ; index1++);
+                for(index2 = index1+1; index2 < 4 && arr[row][index2] == 0 ; index2++);
+                if(index1 >= 4){
+                    break;
                 }
-                if(arr[row][col] == arr[row][col2]){
+                if(index1 != col){
+                    arr[row][col] = arr[row][index1];
+                    arr[row][index1] = 0;
+                }
+                if(index2 < 4 && arr[row][col] == arr[row][index2]){
                     arr[row][col] *= 2;
-                    arr[row][col2] = 0;
-                }
-                else{
-                    arr[row][col + 1] = arr[row][col2];
-                    if(col + 1 != row){
-                        arr[row][col2] = 0;
-                    }
+                    arr[row][index2] = 0;
                 }
             }
         }
         refresh();
     }
     public void toRight(View view){
-
+        for(int row = 0 ; row < 4 ; row++){
+            for(int col = 0 ; col < 3 ; col++){
+                int index1, index2;
+                for(index1 = col; index1 < 4 && arr[row][3 - index1] == 0 ; index1++);
+                for(index2 = index1+1; index2 < 4 && arr[row][3 - index2] == 0 ; index2++);
+                if(index1 >= 4){
+                    break;
+                }
+                if(index1 != col){
+                    arr[row][3 - col] = arr[row][3 - index1];
+                    arr[row][3 - index1] = 0;
+                }
+                if(index2 < 4 && arr[row][3 - col] == arr[row][3 - index2]){
+                    arr[row][3 - col] *= 2;
+                    arr[row][3 - index2] = 0;
+                }
+            }
+        }
         refresh();
     }
     public void toTop(View view){
-
+        for(int col = 0 ; col < 4 ; col++){
+            for(int row = 0 ; row < 3 ; row++){
+                int index1, index2;
+                for(index1 = row; index1 < 4 && arr[index1][col] == 0 ; index1++);
+                for(index2 = index1+1; index2 < 4 && arr[index2][col] == 0 ; index2++);
+                if(index1 >= 4){
+                    break;
+                }
+                if(index1 != row){
+                    arr[row][col] = arr[index1][col];
+                    arr[index1][col] = 0;
+                }
+                if(index2 < 4 && arr[row][col] == arr[index2][col]){
+                    arr[row][col] *= 2;
+                    arr[index2][col] = 0;
+                }
+            }
+        }
         refresh();
     }
     public void toBottom(View view){
-
+        for(int col = 0 ; col < 4 ; col++){
+            for(int row = 0 ; row < 3 ; row++){
+                int index1, index2;
+                for(index1 = row     ; index1 < 4 && arr[3 - index1][col] == 0 ; index1++);
+                for(index2 = index1+1; index2 < 4 && arr[3 - index2][col] == 0 ; index2++);
+                if(index1 >= 4){
+                    break;
+                }
+                if(index1 != row){
+                    arr[3 - row][col] = arr[3 - index1][col];
+                    arr[index1][col] = 0;
+                }
+                if(index2 < 4 && arr[3 - row][col] == arr[3 - index2][col]){
+                    arr[3 - row][col] *= 2;
+                    arr[3 - index2][col] = 0;
+                }
+            }
+        }
         refresh();
     }
 }
